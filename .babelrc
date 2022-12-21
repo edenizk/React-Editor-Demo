@@ -1,0 +1,37 @@
+{
+  "presets": [
+    "@babel/env",
+    "@babel/react",
+    "@babel/typescript"
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+      ]
+    },
+    "development": {
+      "plugins": [
+        [
+          "@babel/plugin-transform-runtime",
+          {
+            "regenerator": false
+          }
+        ],
+        // ["react-hot-loader/babel"]
+      ]
+    },
+    "production": {
+      "plugins": [
+        [
+          "@babel/plugin-transform-runtime",
+          {
+            "regenerator": false
+          }
+        ]
+      ]
+    }
+  },
+  "plugins": [
+
+  ]
+}

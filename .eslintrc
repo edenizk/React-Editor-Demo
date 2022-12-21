@@ -1,0 +1,7 @@
+{
+  "extends": ["eslint:recommended", "airbnb"],
+  "plugins": ["only-warn"],
+  "rules": {
+    "react/jsx-props-no-spreading": 0
+  }
+}
