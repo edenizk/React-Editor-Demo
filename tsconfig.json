@@ -20,15 +20,27 @@
     "isolatedModules": true,
     "noEmit": true,
     "noImplicitAny": false,
-    "jsx": "react-jsx"
+    "noErrorTruncation": true,
+    "jsx": "react-jsx",
+    "paths": {
+      "src/*": ["src/*"],
+      "@providers": ["src/providers/"],
+      "@providers/*": ["src/providers/*"],
+      "@blocks": ["src/blocks/"],
+      "@blocks/*": ["src/blocks/*"],
+      "@traits": ["src/traits/"],
+      "@traits/*": ["src/traits/*"],
+      "@styles": ["src/styles/"],
+      "@styles/*": ["src/styles/*"],
+      "@pages": ["src/pages/"],
+      "@pages/*": ["src/pages/*"],
+      "@scripts": ["src/scripts/"],
+      "@scripts/*": ["src/scripts/*"],
+      "@components": ["src/components/"],
+      "@components/*": ["src/components/*"],
+    },
   },
-  "paths": {
-    "src/*": ["src/*"]
-  },
-  "include": [
-    "src/*",
-    "./typings/**/*.ts"
-  ],
+
   "exclude": [
     "node_modules",
     "./node_modules",
