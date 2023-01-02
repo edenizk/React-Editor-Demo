@@ -1,5 +1,6 @@
 import gsBlocksBasics from 'grapesjs-blocks-basic';
 import customBlocks from '@blocks';
+import customTraits from '@traits';
 import grapesJSStylings from '@scripts/grapesJSStylings'
 
 interface BlockManagerConfig {
@@ -15,12 +16,15 @@ const baseConfig = {
   container: '#gjs',
   fromElement: true,
 
-  plugins: [gsBlocksBasics, ...customBlocks],
+  plugins: [gsBlocksBasics, ...customBlocks, ...customTraits],
 
   protectedCss: grapesJSStylings,
   canvas: {
     scripts: [
       'https://cdn.tailwindcss.com'
+    ],
+    styles: [
+      'https://fonts.googleapis.com/icon?family=Material+Icons'
     ]
   },
 

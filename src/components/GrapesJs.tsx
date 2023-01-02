@@ -8,6 +8,7 @@ import 'GrapesJS-devfuture/assets/css/custom-grapesjs.css'
 import pluginExport from 'grapesjs-plugin-export';
 import gsBlocksBasics from 'grapesjs-blocks-basic'
 import customBlocks from '@blocks'
+import GoogleIconPicker from './GoogleIconPicker';
 
 export interface GrapesjsReactProps {
   // id: HTMLElement['id'];
@@ -34,7 +35,6 @@ const GrapesjsReact = (
     ...options
   }: PropsWithChildren<GrapesjsReactProps> & Parameters<typeof GrapesJS.init>[0]
 ) => {
-
   const [editor, setEditor] = useState<GrapesJS.Editor>();
   const isEditorSet = useRef(false);
   const [device, setDevice] = useState('Desktop');
@@ -140,6 +140,7 @@ const GrapesjsReact = (
   return (
   <div className="app-wrapper">
     <div className="app-main">
+      <GoogleIconPicker editor={editor} />
 
       <div className={`app-content app-content-aside ${isFullScreen ? 'hide-sidebar' : ''}`} id="editor-area">
         <EditorTools

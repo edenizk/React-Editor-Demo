@@ -1,19 +1,13 @@
 import React from 'react'
 
 export interface Column3ItemType {
-  image?: {
-    src?: string,
-    alt?: string
-  },
+  icon?: string,
   title?: string,
   description?: string
 }
 
 const Column3Item = ({
-  image = {
-    src: '',
-    alt: ''
-  },
+  icon = 'check_box_outline_blank',
   title = 'Insert text here',
   description = 'Add here your additional text'
 }: Column3ItemType) => {
@@ -29,16 +23,16 @@ const Column3Item = ({
     data-gjs-draggable="[data-column-list]" 
     data-gjs-droppable="false"
   >
-    <img 
-      data-gjs-draggable="false" 
+    <span 
+      data-gjs-type="iconPicker" 
+      className="material-icons"
       style={{
-        "width":"100%",
-        "height":"90px",
-        "marginBottom":"25px"
+        fontSize: "90px",
+        marginBottom: '25px'
       }}
-      src={image.src}
-      alt={image.alt}
-    />
+    >
+      {icon}
+    </span>
     <h3 
       data-gjs-draggable="false" 
       className="text-center"

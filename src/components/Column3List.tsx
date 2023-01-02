@@ -18,8 +18,9 @@ const Column3List = ({
 }: Column3ListType) => {
   return (
     <section 
-      style={{"padding":"100px 20px"}}
+      style={{"padding":"100px 20px", "maxWidth": "1140px", "margin": "0 auto"}}
       data-gjs-droppable="false"
+      data-gjs-type="column3List"
       data-gjs-draggable='[data-gjs-type="wrapper"]' 
     >
     <h2 

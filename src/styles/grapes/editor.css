@@ -480,13 +480,14 @@ template {
   -webkit-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
   transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
   transform-origin: left;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .hide-sidebar .app-content--sidebar {
   /* margin-left: -100%; */
   transform: translateX(-100%);
   width: 0;
+  overflow: hidden;
   /* opacity: 0; */
 }
 
@@ -1491,7 +1492,7 @@ template {
 
 
 .btn-success {
-  color: #fff;
+  /* color: #fff; */
   background-color: #1bc943;
   border-color: #1bc943;
 }
@@ -1532,7 +1533,7 @@ template {
 }
 
 .btn-info {
-  color: #fff;
+  /* color: #fff; */
   background-color: #11c5db;
   border-color: #11c5db;
 }

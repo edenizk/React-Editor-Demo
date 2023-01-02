@@ -3,3 +3,4 @@
 @tailwind utilities;
 
 @import url('./grapes/editor.css');
+@import url('./grapes/iconPicker.css');
