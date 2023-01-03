@@ -1,4 +1,5 @@
 import gsBlocksBasics from 'grapesjs-blocks-basic';
+import exportPlugin from 'grapesjs-plugin-export';
 import customBlocks from '@blocks';
 import customTraits from '@traits';
 import grapesJSStylings from '@scripts/grapesJSStylings'
@@ -16,7 +17,21 @@ const baseConfig = {
   container: '#gjs',
   fromElement: true,
 
-  plugins: [gsBlocksBasics, ...customBlocks, ...customTraits],
+  plugins: [gsBlocksBasics, exportPlugin, ...customBlocks, ...customTraits],
+  pluginsOpts: {
+    'grapesjs-plugin-export': { 
+      root: {
+        'index.html': ed => (
+          `
+          <head>
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+            <script src="https://cdn.tailwindcss.com"/>
+          </head>
+          <body>${ed.getHtml()}</body>
+        `)
+      }
+    }
+  },
 
   protectedCss: grapesJSStylings,
   canvas: {
@@ -29,7 +44,19 @@ const baseConfig = {
   },
 
   // pluginsOpts: {
-  //   'grapesjs-blocks-basic': {}
+  //   'grapesjs-plugin-export': { 
+  //     root: {
+  //       'index.html': ed => {
+  //         console.log('ed',ed);
+  //         return `
+  //       <head>
+  //         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" .../>
+  //         <script src="https://cdn.tailwindcss.com" .../>
+  //       </head>
+  //       <body>${ed.getHtml()}</body>
+  //       `}
+  //     }
+  //   }
   // },
 
   layerManager: {

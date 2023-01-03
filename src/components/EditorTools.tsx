@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import FileSaver from 'file-saver';
+import JSZip from 'jszip';
+import { Editor, PluginOptions } from 'grapesjs-plugin-export';
 
 const EditorTools = ({editor, device, isFullScreen, setIsFullScreen, styleTabState}) => {
   const [isStyleTabOpen, setIsStyleTabOpen] = styleTabState;
@@ -14,6 +17,71 @@ const EditorTools = ({editor, device, isFullScreen, setIsFullScreen, styleTabSta
       editor.Commands.run('sw-visibility');
     }
   }, [isBorderActive])
+
+  const createFile = (zip: JSZip, name: string, content: string) => {
+    const opts: JSZip.JSZipFileOptions = {};
+    const ext = name.split('.')[1];
+    const isBinary = 
+      !(ext && ['html', 'css'].indexOf(ext) >= 0) &&
+      !/^[\x00-\x7F]*$/.test(content);
+
+    if (isBinary) {
+      opts.binary = true;
+    }
+
+    editor.log(['Create file', { name, content, opts }], { ns: 'plugin-export' });
+    zip.file(name, content, opts);
+  }
+
+  const  createDirectory = async (zip: JSZip, root: PluginOptions["root"]) => {
+
+    for (const name in root) {
+      if (root.hasOwnProperty(name)) {
+        let content = root[name];
+        content = typeof content === 'function' ? await content(editor) : content;
+        const typeOf = typeof content;
+
+        if (typeOf === 'string') {
+          createFile(zip, name, content as string);
+        } else if (typeOf === 'object') {
+          const dirRoot = zip.folder(name);
+          if (dirRoot) {
+            await createDirectory(dirRoot, content as Record<string, unknown>);
+          }
+        }
+      }
+    }
+  }
+
+  const exportHTML = () => {
+    const zip = new JSZip();
+    const onError = console.error;
+    const root = {
+      css: {
+        'style.css': (editor: Editor) => editor.getCss(),
+      },
+      'index.html': (editor: Editor) =>
+        `<!doctype html>
+        <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <link rel="stylesheet" href="./css/style.css">
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <script src="https://cdn.tailwindcss.com"></script>
+          </head>
+          <body>${editor.getHtml()}</body>
+        </html>`,
+    };
+
+    createDirectory(zip, root)
+      .then(async () => {
+        const content = await zip.generateAsync({ type: 'blob' });
+        const filenamePfx = 'template';
+        const filename = `${filenamePfx}_${Date.now()}.zip`;
+        FileSaver.saveAs(content, filename);
+      })
+      .catch(onError);
+  }
 
   const exportPDF = () => {
 
@@ -113,7 +181,8 @@ const EditorTools = ({editor, device, isFullScreen, setIsFullScreen, styleTabSta
                   id="export" 
                   data-target="#editor-export" 
                   href="#" 
-                  onClick={() => {editor.Commands.run('gjs-export-zip')}}
+                  // onClick={() => {editor.Commands.run('gjs-export-zip')}}
+                  onClick={() => {exportHTML()}}
                 >
                   <i className="fa fa-code"></i>
                   {' '}Export HTML

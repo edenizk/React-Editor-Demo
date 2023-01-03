@@ -38,16 +38,10 @@ export const textHighlight = (editor) => {
         ],
       },
       handleColorChange() {
-        const wrapper = editor.getWrapper();
-        const root = wrapper.view.el as HTMLElement;
-        const getColorTrait =  (this as TypeEvent).getTrait('highlightColor');
+        const getColorTrait =  (this as TypeEvent).model.getTrait('highlightColor');
         const getColor = getColorTrait.getValue();
 
-        console.log('root', getColor);
-
-        if (!root) return;
-
-        root.style.setProperty('--highlight-text-color', getColor);
+        editor.Css.setRule(':root', { '--highlight-text-color': getColor });
       },
       init() {
 
@@ -55,16 +49,11 @@ export const textHighlight = (editor) => {
       },
     },
     view: defaultView.extend({
-      // ...(editor.DomComponents.getType('text').view || []),
       onRender() {
-        const wrapper = editor.getWrapper();
-        const root = wrapper.view.el as HTMLElement;
         const getColorTrait =  (this as TypeEvent).model.getTrait('highlightColor');
         const getColor = getColorTrait.getValue();
 
-        if (!root) return;
-
-        root.style.setProperty('--highlight-text-color', getColor);
+        editor.Css.setRule(':root', { '--highlight-text-color': getColor });
       }
     })
   });
