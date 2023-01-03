@@ -34,6 +34,7 @@ const Column3Item = ({
       {icon}
     </span>
     <h3 
+      data-gjs-type="textHighlight"
       data-gjs-draggable="false" 
       className="text-center"
       style={{
@@ -41,7 +42,7 @@ const Column3Item = ({
         "display":"inline",
         "position":"relative",
         "backgroundSize":"200% auto",
-        "backgroundImage":"linear-gradient(to right, rgba(255,0,0,0) 50%,#ac99b4 50%)",
+        "backgroundImage":"linear-gradient(to right, rgba(255,0,0,0) 50%,var(--highlight-text-color) 50%)",
         "backgroundPosition":"0% 0",
         "animationDuration":"1s",
         "animationDelay":"0.8s",

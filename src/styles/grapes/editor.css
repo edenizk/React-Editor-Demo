@@ -1867,3 +1867,8 @@ button.bg-neutral-first:focus {
 .traits-mgr {
   padding: 12px;
 }
+
+.gjs-toolbar-items {
+  display: flex;
+  align-items: center;
+}
