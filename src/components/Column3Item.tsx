@@ -22,6 +22,7 @@ const Column3Item = ({
     data-block="Column3Item" 
     data-gjs-draggable="[data-column-list]" 
     data-gjs-droppable="false"
+    data-gjs-removable="false"
   >
     <span 
       data-gjs-type="iconPicker" 

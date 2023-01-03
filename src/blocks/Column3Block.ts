@@ -7,7 +7,10 @@ const Column3Block = (editor) => {
   editor.Blocks.add('Column3', {
     label: 'Column3',
     content: ReactDOMServer.renderToStaticMarkup(element),
-    category: 'Sections',
+    category: {
+      order: -1,
+      label: 'Sections',
+    },
   })
 
   // editor.Blocks.add('Column3Item', {
