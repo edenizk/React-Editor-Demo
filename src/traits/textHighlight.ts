@@ -1,5 +1,5 @@
 interface TypeEvent {
-  on: (event: string, functions: any) => void;
+  on: (event: string, functions: () => void) => void;
   getTrait: (value: string) => {
     getValue: () => string
   };
