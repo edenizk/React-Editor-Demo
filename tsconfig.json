@@ -28,6 +28,8 @@
       "@providers/*": ["src/providers/*"],
       "@blocks": ["src/blocks/"],
       "@blocks/*": ["src/blocks/*"],
+      "@static": ["src/static/"],
+      "@static/*": ["src/static/*"],
       "@traits": ["src/traits/"],
       "@traits/*": ["src/traits/*"],
       "@styles": ["src/styles/"],

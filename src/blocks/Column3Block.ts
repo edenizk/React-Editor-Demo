@@ -1,5 +1,6 @@
 import ReactDOMServer from 'react-dom/server';
 import Column3List from '@components/Column3List';
+import Column3Media from '@static/img/blocks/Column3Block.png'
 
 const Column3Block = (editor) => {
   const element = Column3List({})
@@ -7,6 +8,7 @@ const Column3Block = (editor) => {
   editor.Blocks.add('Column3', {
     label: 'Column3',
     content: ReactDOMServer.renderToStaticMarkup(element),
+    media: `<img src="${Column3Media}" alt="Colum 3" />`,
     category: {
       order: -1,
       label: 'Sections',
