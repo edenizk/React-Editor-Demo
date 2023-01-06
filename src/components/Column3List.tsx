@@ -38,7 +38,7 @@ const Column3List = ({
     </h2>
     <ul 
       data-gjs-draggable="false" 
-      className="flex justify-center" 
+      className="flex flex-wrap justify-center" 
       style={{
         "display": "flex",
         "justifyContent": "center",

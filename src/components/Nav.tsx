@@ -5,9 +5,9 @@ const Nav = () => {
   return (
     <>
       <nav>
-        <ul className="ml-2.5">
+        <ul className="px-2 justify-center flex">
           <li>
-            <Link to="/"><i className="fa fa-home mr-1"></i>Home</Link>
+            <Link className="py-1 block" to="/"><i className="fa fa-home mr-1"></i>Home</Link>
           </li>
         </ul>
       </nav>
