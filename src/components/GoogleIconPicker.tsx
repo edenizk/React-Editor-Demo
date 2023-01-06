@@ -39,6 +39,7 @@ const GoogleIconPicker = ({ editor }) => {
 
   return (
     <div id="googleIconPicker" className="googleIconPicker items-center justify-center" ref={wrapperRef}>
+      <div className="googleIconPicker__overlay" onClick={() => handleClose()}></div>
       <div className="googleIconPicker__content">
         <span className="close flex justify-end googleIconPicker__close" onClick={() => handleClose()}>&times;</span>
         <input className="icon-searcher googleIconPicker__searcher" type="text" name="icon-searcher" placeholder="Search..." onChange={handleSearchChange}/>
