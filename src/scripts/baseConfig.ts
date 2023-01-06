@@ -9,7 +9,7 @@ interface BlockManagerConfig {
   blocks: Array<object>;
 }
 
-const baseConfig = {
+const baseConfig = (plugins) => ({
   height: '100%',
   showOffsets: true,
   noticeOnUnload: 0,
@@ -17,7 +17,7 @@ const baseConfig = {
   container: '#gjs',
   fromElement: true,
 
-  plugins: [gsBlocksBasics, exportPlugin, ...customBlocks, ...customTraits],
+  plugins: [gsBlocksBasics, exportPlugin, ...customBlocks, ...customTraits, ...plugins],
   pluginsOpts: {
     'grapesjs-plugin-export': { 
       root: {
@@ -120,6 +120,6 @@ const baseConfig = {
   },
 
   panels: { defaults: [] },
-}
+})
 
 export default baseConfig;

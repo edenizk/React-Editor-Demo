@@ -1,5 +1,5 @@
-import React, { useReducer } from 'react'
-import { Outlet, Link } from "react-router-dom";
+import React from 'react'
+import { Outlet } from "react-router-dom";
 import PageProvider from '@providers/page/PageProvider'
 import Nav from '@components/Nav';
 

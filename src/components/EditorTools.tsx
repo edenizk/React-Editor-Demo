@@ -1,12 +1,12 @@
+/* eslint-disable no-prototype-builtins */
+/* eslint-disable no-control-regex */
 import React, { useState, useEffect } from 'react'
 import FileSaver from 'file-saver';
 import JSZip from 'jszip';
 import { Editor, PluginOptions } from 'grapesjs-plugin-export';
 import html2pdf from 'html2pdf.js'
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
 
-const EditorTools = ({editor, device, isFullScreen, setIsFullScreen, styleTabState}) => {
+const EditorTools = ({editor, device, setIsFullScreen, styleTabState}) => {
   const [isStyleTabOpen, setIsStyleTabOpen] = styleTabState;
   const [isSideBarInnerActive2, setIsSideBarInnerActive2] = useState(false);
   const [isBorderActive, setIsBorderActive] = useState(false);

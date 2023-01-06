@@ -1,5 +1,3 @@
-
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useRef, useMemo, useState, useEffect } from 'react';
 import 'material-icons/iconfont/material-icons.css';
 import useDebounce from '@hooks/useDebounce';

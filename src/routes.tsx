@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import type { RouteObject } from "react-router-dom";
-import { Outlet, Link, useRoutes, useParams } from "react-router-dom";
+import { useRoutes } from "react-router-dom";
 import Layout from './pages/Layout'
 import PageList from './pages/PageList';
 import DemoPage from './pages/DemoPage';

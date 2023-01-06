@@ -2,34 +2,20 @@ import React, {PropsWithChildren, useState, useEffect, useRef} from 'react';
 import GrapesJS from 'grapesjs';
 import baseConfig from '@scripts/baseConfig';
 import EditorTools from '@components/EditorTools';
+import GoogleIconPicker from '@components/GoogleIconPicker';
 import 'grapesjs/dist/css/grapes.min.css';
 import 'GrapesJS-devfuture/assets/css/custom-grapesjs.css'
 
-import pluginExport from 'grapesjs-plugin-export';
-import gsBlocksBasics from 'grapesjs-blocks-basic'
-import customBlocks from '@blocks'
-import GoogleIconPicker from './GoogleIconPicker';
-
 export interface GrapesjsReactProps {
-  // id: HTMLElement['id'];
 
   onInit?(editor?: GrapesJS.Editor): void;
 
-  onDestroy?(): void;
-
-  plugins?: (string | GrapesJS.Plugin<{}>)[]
-}
-
-
-interface BlockManagerConfig {
-  appendTo?: HTMLElement | string;
-  blocks: Array<object>;
+  plugins?: (string | GrapesJS.Plugin<object>)[]
 }
 
 const GrapesjsReact = (
   {
     onInit,
-    onDestroy,
     children,
     plugins = [],
     ...options
@@ -39,36 +25,13 @@ const GrapesjsReact = (
   const isEditorSet = useRef(false);
   const [device, setDevice] = useState('Desktop');
   const [isFullScreen, setIsFullScreen] = useState(false);
-  const [isSideBarInnerActive3, setIsSideBarInnerActive3] = useState(false);
-  const [isSideBarInnerActive2, setIsSideBarInnerActive2] = useState(false);
-  const [isBorderActive, setIsBorderActive] = useState(false);
   const [isStyleTabOpen, setIsStyleTabOpen] = useState(false);
-
-  useEffect(() => {
-    if (!editor) return;
-
-    if (!isBorderActive) {
-      editor.Commands.stop('sw-visibility');
-    } else {
-      editor.Commands.run('sw-visibility');
-    }
-  }, [isBorderActive])
-
-  const exportPDF = () => {
-
-  }
 
   useEffect(() => {
     // const selector = `#${id}`;
     if (!isEditorSet.current) {
       const editor = GrapesJS.init({
-        // container: selector,
-        // container: '#gjs',
-        // fromElement: !!children,
-        // plugins: [gsBlocksBasics, ...plugins],
-
-        ...baseConfig,
-        // ...options
+        ...baseConfig(plugins),
       });
       setEditor(editor);
       isEditorSet.current = true;
@@ -86,10 +49,6 @@ const GrapesjsReact = (
       editor.on('change:device' as GrapesJS.GrapesEvent, () => {
         setDevice(editor.getDevice())
       });
-      
-
-
-      console.log('RichTextEditor', editor.RichTextEditor)
 
       editor.RichTextEditor.remove('wrap');
 
@@ -99,7 +58,7 @@ const GrapesjsReact = (
                 <path fill="currentColor" d="M20.71,4.63L19.37,3.29C19,2.9 18.35,2.9 17.96,3.29L9,12.25L11.75,15L20.71,6.04C21.1,5.65 21.1,5 20.71,4.63M7,14A3,3 0 0,0 4,17C4,18.31 2.84,19 2,19C2.92,20.22 4.5,21 6,21A4,4 0 0,0 10,17A3,3 0 0,0 7,14Z" />
             </svg>`,
         attributes: { title: 'Wrap for style' },
-        result: rte => {
+        result: () => {
           setIsStyleTabOpen(true)
         },
       })
@@ -146,7 +105,6 @@ const GrapesjsReact = (
         <EditorTools
           editor={editor}
           device={device}
-          isFullScreen={isFullScreen}
           setIsFullScreen={setIsFullScreen}
           styleTabState={[isStyleTabOpen, setIsStyleTabOpen]}
         />
