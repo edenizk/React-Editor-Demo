@@ -40,18 +40,10 @@ const Column3Item = ({
       data-gjs-type="textHighlight"
       data-gjs-removable="false"
       data-gjs-draggable="false" 
-      className="text-center"
+      className="text-center highlight-animation"
       style={{
-        "animationName":"highlight",
         "display":"inline",
         "position":"relative",
-        "backgroundSize":"200% auto",
-        "backgroundImage":"linear-gradient(to right, rgba(255,0,0,0) 50%,var(--highlight-text-color) 50%)",
-        "backgroundPosition":"0% 0",
-        "animationDuration":"1s",
-        "animationDelay":"0.8s",
-        "animationIterationCount":"1",
-        "animationFillMode":"forwards",
         "paddingLeft":"0.15em",
         "whiteSpace":"pre-wrap",
         "paddingRight":"0.15em",
@@ -74,7 +66,6 @@ const Column3Item = ({
         "color":"#1a2138",
         "fontWeight":"400",
         "margin":"0px",
-        "marginBottom":"12px",
         "wordBreak": "break-all"
       }}
     >

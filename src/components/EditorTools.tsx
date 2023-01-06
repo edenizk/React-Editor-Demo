@@ -3,6 +3,8 @@ import FileSaver from 'file-saver';
 import JSZip from 'jszip';
 import { Editor, PluginOptions } from 'grapesjs-plugin-export';
 import html2pdf from 'html2pdf.js'
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
 const EditorTools = ({editor, device, isFullScreen, setIsFullScreen, styleTabState}) => {
   const [isStyleTabOpen, setIsStyleTabOpen] = styleTabState;
@@ -85,25 +87,31 @@ const EditorTools = ({editor, device, isFullScreen, setIsFullScreen, styleTabSta
   }
 
   const exportPDF = () => {
-    const element = `<!doctype html>
-    <html lang="en">
-      <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="./css/style.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <style>
-          ${editor.getCss()}
-        </style>
-      </head>
-      <body>${editor.getHtml()}</body>
-    </html>`;
-      // Choose the element and save the PDF for your user.
-      html2pdf().from(element).save();
-  }
-  
+    const element = `
+      <!doctype html>
+      <html lang="en">
+        <head>
+          <meta charset="utf-8">
+          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+          <script src="https://cdn.tailwindcss.com"></script>
+          <style>
+            ${editor.getCss()}
+            
+            .highlight-animation {
+              margin-top: 21px !important;
+              padding-bottom: 22px !important;
+              line-height: 18px !important;
+              background-color: var(--highlight-text-color);
+            }
 
-  // if (!editor) return <></>
+          </style>
+        </head>
+        <body>${editor.getHtml()}</body>
+      </html>
+    `;  
+      
+    html2pdf().from(element).save();
+  }
 
   return (
     <>
