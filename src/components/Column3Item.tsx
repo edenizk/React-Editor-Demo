@@ -17,7 +17,8 @@ const Column3Item = ({
       "flexGrow":"1",
       "display":"flex",
       "flexDirection":"column",
-      "alignItems":"center"
+      "alignItems":"center",
+      maxWidth: "356px"
     }}
     data-block="Column3Item" 
     data-gjs-draggable="[data-column-list]" 
@@ -26,16 +27,18 @@ const Column3Item = ({
   >
     <span 
       data-gjs-type="iconPicker" 
+      data-gjs-removable="false"
       className="material-icons"
       style={{
         fontSize: "90px",
-        marginBottom: '25px'
+        marginBottom: '25px',
       }}
     >
       {icon}
     </span>
     <h3 
       data-gjs-type="textHighlight"
+      data-gjs-removable="false"
       data-gjs-draggable="false" 
       className="text-center"
       style={{
@@ -56,20 +59,23 @@ const Column3Item = ({
         "color":"#1a2138",
         "fontWeight":"700",
         "margin":"0",
-        "marginBottom":"12px"
+        "marginBottom":"12px",
+        "wordBreak": "break-all"
       }}
     >
       {title}
     </h3>
     <p 
-      data-gjs-draggable="false" 
+      data-gjs-draggable="false"
+      data-gjs-removable="false" 
       className="text-center"
       style={{
         "fontSize":"18px",
         "color":"#1a2138",
         "fontWeight":"400",
         "margin":"0px",
-        "marginBottom":"12px"
+        "marginBottom":"12px",
+        "wordBreak": "break-all"
       }}
     >
       {description}

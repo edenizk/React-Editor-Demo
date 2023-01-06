@@ -24,6 +24,7 @@ const Column3List = ({
       data-gjs-draggable='[data-gjs-type="wrapper"]' 
     >
     <h2 
+      data-gjs-removable="false"
       data-gjs-draggable="false" 
       style={{
         "color": "#1a2138",
@@ -37,6 +38,7 @@ const Column3List = ({
       {title}
     </h2>
     <ul 
+      data-gjs-removable="false"
       data-gjs-draggable="false" 
       className="flex flex-wrap justify-center" 
       style={{
