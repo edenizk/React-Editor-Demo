@@ -10,6 +10,12 @@ const grapesJSStylings = `
     background-position: 0% 0;
   }
 
+  .section-container {
+    padding: 100px 20px;
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
   @keyframes highlight {
     from {background-position: 0% 0;}
     to {background-position: -100% 0;}

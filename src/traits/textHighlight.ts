@@ -38,7 +38,7 @@ export const textHighlight = (editor) => {
         ],
       },
       handleColorChange() {
-        const getColorTrait =  (this as TypeEvent).model.getTrait('highlightColor');
+        const getColorTrait =  (this as TypeEvent).getTrait('highlightColor');
         const getColor = getColorTrait.getValue();
 
         editor.Css.setRule(':root', { '--highlight-text-color': getColor });

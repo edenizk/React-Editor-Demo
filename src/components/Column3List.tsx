@@ -18,45 +18,50 @@ const Column3List = ({
 }: Column3ListType) => {
   return (
     <section 
-      style={{"padding":"100px 20px", "maxWidth": "1140px", "margin": "0 auto"}}
       data-gjs-droppable="false"
       data-gjs-type="column3List"
       data-gjs-draggable='[data-gjs-type="wrapper"]' 
     >
-    <h2 
-      data-gjs-removable="false"
-      data-gjs-draggable="false" 
-      style={{
-        "color": "#1a2138",
-        "fontSize": "40px",
-        "fontWeight": "700",
-        "margin": "0px",
-        "marginBottom": "32px",
-        "textAlign": "center"
-      }}
-    >
-      {title}
-    </h2>
-    <ul 
-      data-gjs-removable="false"
-      data-gjs-draggable="false" 
-      className="flex flex-wrap justify-center" 
-      style={{
-        "display": "flex",
-        "justifyContent": "center",
-        "gap": "15px"
-      }}
-      data-column-list 
-      // data-gjs-droppable="false"
-    >
-      {
-        parse(items.map((item) => {
-          const element = <Column3Item {...item}/>
+      <div
+        className="section-container"
+        data-gjs-droppable="false"
+        data-gjs-draggable="false"
+      >
+        <h2 
+          data-gjs-removable="false"
+          data-gjs-draggable="false" 
+          style={{
+            "color": "#1a2138",
+            "fontSize": "40px",
+            "fontWeight": "700",
+            "margin": "0px",
+            "marginBottom": "32px",
+            "textAlign": "center"
+          }}
+        >
+          {title}
+        </h2>
+        <ul 
+          data-gjs-removable="false"
+          data-gjs-draggable="false" 
+          className="flex flex-wrap justify-center" 
+          style={{
+            "display": "flex",
+            "justifyContent": "center",
+            "gap": "15px"
+          }}
+          data-column-list 
+          // data-gjs-droppable="false"
+        >
+          {
+            parse(items.map((item) => {
+              const element = <Column3Item {...item}/>
 
-          return ReactDOMServer.renderToStaticMarkup(element)
-        }).join(''))
-      }
-    </ul>
+              return ReactDOMServer.renderToStaticMarkup(element)
+            }).join(''))
+          }
+        </ul>
+      </div>
   </section>
   )
 }
